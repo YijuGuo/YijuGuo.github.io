@@ -1,0 +1,79 @@
+1:"$Sreact.fragment"
+2:I[3719,["843","static/chunks/843-80c0dd72312e00d1.js","874","static/chunks/874-196dbf0660d69360.js","388","static/chunks/388-35b34fea8c40f816.js","177","static/chunks/app/layout-0a3def5a83df4b5f.js"],"ThemeProvider"]
+3:I[3362,["843","static/chunks/843-80c0dd72312e00d1.js","874","static/chunks/874-196dbf0660d69360.js","388","static/chunks/388-35b34fea8c40f816.js","177","static/chunks/app/layout-0a3def5a83df4b5f.js"],"default"]
+4:I[7555,[],""]
+5:I[1295,[],""]
+6:I[2548,["843","static/chunks/843-80c0dd72312e00d1.js","874","static/chunks/874-196dbf0660d69360.js","388","static/chunks/388-35b34fea8c40f816.js","177","static/chunks/app/layout-0a3def5a83df4b5f.js"],"default"]
+7:I[3194,["843","static/chunks/843-80c0dd72312e00d1.js","874","static/chunks/874-196dbf0660d69360.js","831","static/chunks/app/blog/page-1e342fc52d6a561d.js"],"default"]
+a:I[9665,[],"MetadataBoundary"]
+c:I[9665,[],"OutletBoundary"]
+f:I[4911,[],"AsyncMetadataOutlet"]
+11:I[9665,[],"ViewportBoundary"]
+13:I[6614,[],""]
+:HL["/_next/static/css/a9b1dbf002d30e11.css","style"]
+8:T58d,
+## Motivation
+
+Reinforcement Learning with Verifiable Rewards (RLVR) has advanced LLM reasoning, but remains constrained by **inefficient exploration under limited rollout budgets**. We discovered that many exploration failures arise not from problem difficulty, but from a small number of prompt tokens that **introduce interference**.
+
+## Method
+
+We propose the **Less Noise Sampling Framework (LENS)**, a two-stage approach:
+
+### Stage 1: Interference Token Identification & Purification
+
+By quantifying the token-level deviation between the policy model and reference model via **Interference Score**, we precisely identify and remove tokens that mislead reasoning, boosting single-batch sampling success rate by approximately **20%**.
+
+### Stage 2: Calibrated Sampling Strategy Optimization
+
+Successful reasoning chains from purified prompts are used as supervision signals to calibrate policy updates on the original noisy prompts, improving reasoning robustness under real-world interference.
+
+## Results
+
+- Average **+3.88%** performance gain across 7 math reasoning benchmarks
+- **1.6x faster convergence** compared to GRPO
+- Outperforms both scaling exploration (GRPO with doubled rollouts) and prompt filtering baselines (DAPO, GRESO)
+- Evaluated on Llama-3.2, Qwen-2.5/3, and Qwen-3 model families
+
+## Links
+
+- Paper: [arXiv](https://arxiv.org/abs/2601.21244)
+- Code: [GitHub](https://github.com/RUCBM/LENS)
+9:T555,
+## Motivation
+
+Through comparing token-level gradient differences between LLaMA-70B and LLaMA-1B, we found that **small model reasoning failures often stem from over-attending to distracting tokens while ignoring critical ones**. Simply removing these distracting tokens improves accuracy by 20% on math tasks and 10% on code tasks.
+
+## Method
+
+We propose **Learning to Focus (LeaF)**, a two-stage causal distillation framework:
+
+### Stage 1: Confounding Token Detection
+
+LeaF identifies confounding tokens via teacher-student **gradient-based comparisons** on sensitivity discrepancies, effectively pruning interfering tokens from training corpora and generating high-quality **counterfactual samples** through span pruning.
+
+### Stage 2: Causal Attention Distillation
+
+By contrasting model outputs on original and counterfactual samples through a **hybrid distillation loss** (standard KL divergence + counterfactual KL divergence), LeaF guides the student model to learn genuine causal dependencies.
+
+## Results
+
+Compared to standard distillation:
+
+- **Math reasoning** (GSM8K, MATH, OlympiadBench): **+2.41%**
+- **Code generation** (HumanEval+, LeetCode, LiveCodeBench): **+2.48%**
+- **Multi-hop reasoning** (2WikiMQA, Musique, HotpotQA): **+3.24%**
+
+## Links
+
+- Paper: [arXiv](https://arxiv.org/abs/2506.07851)
+- Code: [GitHub](https://github.com/RUCBM/LeaF)
+0:{"P":null,"b":"cH-Et6wO_I1dZ1WYY9g1t","p":"","c":["","blog",""],"i":false,"f":[[["",{"children":["blog",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/a9b1dbf002d30e11.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"scroll-smooth","suppressHydrationWarning":true,"children":[["$","head",null,{"children":[["$","link",null,{"rel":"icon","href":"/favicon.svg?v=2","type":"image/svg+xml"}],["$","link",null,{"rel":"dns-prefetch","href":"https://google-fonts.jialeliu.com"}],["$","link",null,{"rel":"preconnect","href":"https://google-fonts.jialeliu.com","crossOrigin":""}],["$","link",null,{"rel":"preload","as":"style","href":"https://google-fonts.jialeliu.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"}],["$","link",null,{"rel":"stylesheet","id":"gfonts-css","href":"https://google-fonts.jialeliu.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap","media":"print"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              (function(){\n                var l = document.getElementById('gfonts-css');\n                if (!l) return;\n                if (l.media !== 'all') {\n                  l.addEventListener('load', function(){ try { l.media = 'all'; } catch(e){} });\n                }\n              })();\n            "}}],["$","noscript",null,{"children":["$","link",null,{"rel":"stylesheet","href":"https://google-fonts.jialeliu.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"}]}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"\n              try {\n                const theme = localStorage.getItem('theme-storage');\n                const parsed = theme ? JSON.parse(theme) : null;\n                const setting = parsed?.state?.theme || 'system';\n                const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;\n                const effective = setting === 'dark' ? 'dark' : (setting === 'light' ? 'light' : (prefersDark ? 'dark' : 'light'));\n                var root = document.documentElement;\n                root.classList.add(effective);\n                root.setAttribute('data-theme', effective);\n              } catch (e) {\n                var root = document.documentElement;\n                root.classList.add('light');\n                root.setAttribute('data-theme', 'light');\n              }\n            "}}]]}],["$","body",null,{"className":"font-sans antialiased","children":["$","$L2",null,{"children":[["$","$L3",null,{"items":[{"title":"About","type":"page","target":"about","href":"/"},{"title":"Publications","type":"page","target":"publications","href":"/publications"},{"title":"Teaching","type":"page","target":"teaching","href":"/teaching"},{"title":"Awards","type":"page","target":"awards","href":"/awards"},{"title":"CV","type":"page","target":"cv","href":"/cv"}],"siteTitle":"Yiju Guo","enableOnePageMode":false}],["$","main",null,{"className":"min-h-screen pt-16 lg:pt-20","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L6",null,{"lastUpdated":"May 20, 2026"}]]}]}]]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","div",null,{"className":"max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12","children":["$","$L7",null,{"posts":[{"id":"lens-acl2026","en":{"id":"lens-acl2026","title":"LENS: Less Noise, More Voice — Our ACL 2026 Paper","date":"2026-04","summary":"We propose LENS, an online selective rollout framework that identifies and removes interference tokens to boost RL reasoning performance by +3.88% with 1.6x faster convergence.","tags":["RLVR","LLM Reasoning","ACL 2026"],"content":"$8"},"zh":{"id":"lens-acl2026","title":"LENS: Less Noise, More Voice — ACL 2026 论文介绍","date":"2026-04","summary":"我们提出了 LENS，一种在线选择性采样框架，通过识别和去除干扰词元，将强化学习推理性能提升 +3.88%，收敛速度加快 1.6 倍。","tags":["RLVR","LLM Reasoning","ACL 2026"],"content":"\n## 研究动机\n\n基于可验证奖励的强化学习（RLVR）推动了大语言模型推理能力的发展，但在有限的采样预算下仍然受制于**低效的探索**。我们发现，许多探索失败并非源于题目难度，而是提示词中存在极少量的**干扰词元误导了推理方向**。\n\n## 方法\n\n我们提出了 **Less Noise Sampling Framework（LENS）**，一个两阶段的方法：\n\n### 第一阶段：干扰词元识别与净化\n\n通过量化策略模型与参考模型之间的 Token 级偏差（**Interference Score**），精准识别并去除误导推理的词元，将单批次采样成功率提升约 **20%**。\n\n### 第二阶段：校准采样策略优化\n\n将净化后提示词下的成功推理链作为监督信号，校准原始噪声提示词下的策略更新，提升真实场景中对指令干扰的推理鲁棒性。\n\n## 实验结果\n\n- 在 7 个数学推理基准测试中平均性能提升 **+3.88%**\n- 相比 GRPO 实现 **1.6 倍收敛加速**\n- 优于扩大探索量的 GRPO（双倍采样）和提示过滤基线方法（DAPO、GRESO）\n- 在 Llama-3.2、Qwen-2.5/3 和 Qwen-3 模型系列上验证\n\n## 相关链接\n\n- 论文：[arXiv](https://arxiv.org/abs/2601.21244)\n- 代码：[GitHub](https://github.com/RUCBM/LENS)\n"},"ja":{"id":"lens-acl2026","title":"LENS: Less Noise, More Voice — ACL 2026 採択論文","date":"2026-04","summary":"干渉トークンを識別・除去するオンライン選択的ロールアウトフレームワーク LENS を提案。RL推論性能を +3.88% 向上、収束速度を 1.6 倍に加速。","tags":["RLVR","LLM Reasoning","ACL 2026"],"content":"\n## 研究動機\n\n検証可能な報酬に基づく強化学習（RLVR）はLLMの推論能力を向上させましたが、限られたロールアウト予算下での**非効率な探索**に制約されています。多くの探索失敗は問題の難易度ではなく、プロンプト中のごく少数の**干渉トークンが推論方向を偏向させる**ことに起因することを発見しました。\n\n## 手法\n\n**Less Noise Sampling Framework（LENS）** を提案しました。二段階のアプローチです：\n\n### 第一段階：干渉トークンの識別と浄化\n\nポリシーモデルと参照モデル間のトークンレベルの偏差（**Interference Score**）を定量化し、推論を誤導するトークンを精密に識別・除去。単一バッチのサンプリング成功率を約 **20%** 向上させました。\n\n### 第二段階：キャリブレーションサンプリング戦略の最適化\n\n浄化されたプロンプトから得られた成功推論チェーンを監督信号として使用し、元のノイズプロンプト下でのポリシー更新をキャリブレーション。実環境における干渉下での推論ロバスト性を向上させました。\n\n## 実験結果\n\n- 7つの数学推論ベンチマークで平均 **+3.88%** の性能向上\n- GRPOと比較して **1.6倍の収束加速**\n- 探索量拡大のGRPO（2倍ロールアウト）およびプロンプトフィルタリングベースライン（DAPO、GRESO）を上回る性能\n- Llama-3.2、Qwen-2.5/3、Qwen-3モデルファミリーで検証\n\n## 関連リンク\n\n- 論文：[arXiv](https://arxiv.org/abs/2601.21244)\n- コード：[GitHub](https://github.com/RUCBM/LENS)\n"}},{"id":"leaf-neurips2025","en":{"id":"leaf-neurips2025","title":"LeaF: Learning to Focus — Our NeurIPS 2025 Paper","date":"2025-09","summary":"We introduce LeaF, a causal attention distillation framework that improves LLM reasoning by identifying and pruning confounding tokens via gradient-guided comparisons.","tags":["Knowledge Distillation","LLM Reasoning","NeurIPS 2025"],"content":"$9"},"zh":{"id":"leaf-neurips2025","title":"LeaF: Learning to Focus — NeurIPS 2025 论文介绍","date":"2025-09","summary":"我们提出了 LeaF，一种因果注意力蒸馏框架，通过基于梯度的比较识别和剪枝干扰词元，提升大语言模型的推理能力。","tags":["Knowledge Distillation","LLM Reasoning","NeurIPS 2025"],"content":"\n## 研究动机\n\n通过对比 LLaMA-70B 与 LLaMA-1B 的 Token 级梯度差异，我们发现**小模型推理失败往往源于过度关注干扰 Token 而忽略关键 Token**。仅删除这些干扰 Token，即可在数学任务上提升 20%、代码任务上提升 10% 的准确率。\n\n## 方法\n\n我们提出了 **Learning to Focus（LeaF）**，一个两阶段因果蒸馏框架：\n\n### 第一阶段：干扰词元检测\n\nLeaF 通过教师-学生模型的**梯度比较**识别敏感性差异中的干扰词元，有效地从训练语料中剪枝干扰 Token，并通过跨度剪枝生成高质量的**反事实样本**。\n\n### 第二阶段：因果注意力蒸馏\n\n通过对比原始样本与反事实样本的模型输出，使用**混合蒸馏损失**（标准 KL 散度 + 反事实 KL 散度），引导学生模型学习真实的因果依赖关系。\n\n## 实验结果\n\n相比标准蒸馏方法：\n\n- **数学推理**（GSM8K、MATH、OlympiadBench）：**+2.41%**\n- **代码生成**（HumanEval+、LeetCode、LiveCodeBench）：**+2.48%**\n- **多跳推理**（2WikiMQA、Musique、HotpotQA）：**+3.24%**\n\n## 相关链接\n\n- 论文：[arXiv](https://arxiv.org/abs/2506.07851)\n- 代码：[GitHub](https://github.com/RUCBM/LeaF)\n"},"ja":{"id":"leaf-neurips2025","title":"LeaF: Learning to Focus — NeurIPS 2025 採択論文","date":"2025-09","summary":"勾配に基づく比較により干渉トークンを識別・剪定する因果注意蒸留フレームワーク LeaF を提案。LLMの推論能力を向上。","tags":["Knowledge Distillation","LLM Reasoning","NeurIPS 2025"],"content":"\n## 研究動機\n\nLLaMA-70BとLLaMA-1Bのトークンレベルの勾配差を比較した結果、**小型モデルの推論失敗は干渉トークンへの過度な注目と重要トークンの無視に起因する**ことが判明しました。これらの干渉トークンを削除するだけで、数学タスクで20%、コードタスクで10%の精度向上を達成しました。\n\n## 手法\n\n**Learning to Focus（LeaF）** を提案しました。二段階の因果蒸留フレームワークです：\n\n### 第一段階：干渉トークン検出\n\nLeaFは教師-生徒モデルの**勾配に基づく比較**により感度の差異から干渉トークンを識別し、訓練コーパスから干渉トークンを効果的に剪定。スパン剪定により高品質な**反事実サンプル**を生成します。\n\n### 第二段階：因果注意蒸留\n\n元のサンプルと反事実サンプルのモデル出力を対比し、**ハイブリッド蒸留損失**（標準KLダイバージェンス＋反事実KLダイバージェンス）を通じて、生徒モデルが真の因果依存関係を学習するよう誘導します。\n\n## 実験結果\n\n標準蒸留と比較して：\n\n- **数学推論**（GSM8K、MATH、OlympiadBench）：**+2.41%**\n- **コード生成**（HumanEval+、LeetCode、LiveCodeBench）：**+2.48%**\n- **マルチホップ推論**（2WikiMQA、Musique、HotpotQA）：**+3.24%**\n\n## 関連リンク\n\n- 論文：[arXiv](https://arxiv.org/abs/2506.07851)\n- コード：[GitHub](https://github.com/RUCBM/LeaF)\n"}}],"authorName":"Yiju Guo"}]}],["$","$La",null,{"children":"$Lb"}],null,["$","$Lc",null,{"children":["$Ld","$Le",["$","$Lf",null,{"promise":"$@10"}]]}]]}],{},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","rgG7AAEWKK5LOLSZi3Kei",{"children":[["$","$L11",null,{"children":"$L12"}],null]}],null]}],false]],"m":"$undefined","G":["$13","$undefined"],"s":false,"S":true}
+14:"$Sreact.suspense"
+15:I[4911,[],"AsyncMetadata"]
+b:["$","$14",null,{"fallback":null,"children":["$","$L15",null,{"promise":"$@16"}]}]
+e:null
+12:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+d:null
+16:{"metadata":[["$","title","0",{"children":"Blog | Yiju Guo"}],["$","meta","1",{"name":"description","content":"Technical blog posts and research notes."}],["$","meta","2",{"name":"author","content":"Yiju Guo"}],["$","meta","3",{"name":"keywords","content":"Yiju Guo,PhD,Research,Gaoling School of Artificial Intelligence, Renmin University of China"}],["$","meta","4",{"name":"creator","content":"Yiju Guo"}],["$","meta","5",{"name":"publisher","content":"Yiju Guo"}],["$","meta","6",{"property":"og:title","content":"Yiju Guo"}],["$","meta","7",{"property":"og:description","content":"PhD student at Renmin University of China."}],["$","meta","8",{"property":"og:site_name","content":"Yiju Guo's Academic Website"}],["$","meta","9",{"property":"og:locale","content":"en_US"}],["$","meta","10",{"property":"og:type","content":"website"}],["$","meta","11",{"name":"twitter:card","content":"summary"}],["$","meta","12",{"name":"twitter:title","content":"Yiju Guo"}],["$","meta","13",{"name":"twitter:description","content":"PhD student at Renmin University of China."}],["$","link","14",{"rel":"icon","href":"/favicon.svg?v=2"}]],"error":null,"digest":"$undefined"}
+10:{"metadata":"$16:metadata","error":null,"digest":"$undefined"}
